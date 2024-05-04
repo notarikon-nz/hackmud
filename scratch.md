@@ -26,9 +26,35 @@ work
 |-----------/ |-----------/
 ```
 
-5. Open the Org Chart with `site.private {username:"username",pin:"pin",work:"org chart"}` and add any usernames to your username list in your database or lib file
+5. Open the Org Chart with `site.private {username:"username",pin:"pin",work:"org chart"}` and add any usernames to your username list in your database or lib file. Note: Corruption cannot be removed, it's static
 
-6. Open the Calendar with `site.private {username:"username",pin:"pin",work:"calendar"}` and you will see a page like:
+```
+org chart- 
+
+renaldos_malc
+ i_am_the_eggman
+ diamond_dogz
+   © ¤Ã 
+  Á¡ §
+childishg4mb
+  pugluv4vr
+ ¡¢ ¨ ¤
+  ¨Á¤ÁÃ
+   ¤¨¡Á¨©ª
+  ¦§Ã¦
+ shawn_aa
+  d_bowman
+  theshrillery
+  ¡¤Á¤Á
+  doc_brown
+  troy_cole
+ ¦¦Ãª
+  ¦¡ÃÃÃ¦
+  ¦ ª¦©Á¡
+  ª¨¢¢¢§
+```
+
+7. Open the Calendar with `site.private {username:"username",pin:"pin",work:"calendar"}` and you will see a page like:
 
 ```
 calendar- 
@@ -59,11 +85,21 @@ There are two parameters: `a_t:"w_ek",d:"1"` whick can control the view as well.
 a. An encoded string that we will use the key from our private store to decode
 
 ```
+2pgE4Ih5tp+05IBq6oME/r6F=s2MtrqS+nmX97+JBsIE/7dXAr6HBrJT=GmY=a2FC1Mv/7da/82J+8xenKm7vamE1auJ8aVFBKqW9lNE1WZE9pyb/7VQ8a2J8b+FB7BM=Klv9q9P9rmo+rqF8a+W+7qP9lNE1WZE9pyR/Kqd8aZDBaqQ/a6W9lNE1WZE9pyY/r6W+6hNAZhJ=KhJBrFJAKlv
 ```
 
-b. A list of usernames that have available PINs on this server (not sure yet if the pink asterisk indicates anything important)
+b. A list of usernames that have available PINs on this server (not sure yet if the pink + indicates anything important)
 
 ```
+calendar- 
+
+investor meeting
+
+invitees:
++be_lavar
+-theshrillery (¡¢ª¤)
+-troy_cole (©©¢Ã)
+-theshrillery
 ```
 
 c. A link to a "private store" location
@@ -71,9 +107,13 @@ c. A link to a "private store" location
 ```
 ```
 
-9. Visit the private store and using your username and pin. Load expendable scripts into your first few upgrade slots.
+9. Visit the private store using your pin, `futuretech.troy_cole_lzyzx1 {pin:"0217"}`. Load expendable scripts into your first few upgrade slots. Now visit each file using the `i` parameter, e.g.
 
-10. Check each of the files listed, and they will either a) destroy an upgrade or b) reveal encoded information, examples below:
+```
+futuretech.troy_cole_lzyzx1 {pin:"0217"}
+```
+
+11. Check each of the files listed, and they will either a) destroy an upgrade or b) reveal encoded information, examples below:
 
 file_7b_27_6i_12.dat
 
