@@ -78,7 +78,7 @@ calendar-
 =====================================
 ```
 
-There are two parameters: `a_t:"w_ek",d:"1"` whick can control the view as well. More research required
+There are two parameters: `a_t:"w_ek",d:"1"` whick can control the view as well. More research required. You can scrape these entries with a regex `/ [a-zA-Z0-9]{6} /` 
 
 7. View each of the calendar entries using the `i` parameter `site.private {username:"username",pin:"pin",work:"calendar",i:"pkh1oh"}` - inside each of these will be one of three entries:
 
