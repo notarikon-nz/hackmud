@@ -57,8 +57,19 @@ There are two parameters: `a_t:"w_ek",d:"1"` whick can control the view as well.
 7. View each of the calendar entries using the `i` parameter `site.private {username:"username",pin:"pin",work:"calendar",i:"pkh1oh"}` - inside each of these will be one of three entries:
 
 a. An encoded string that we will use the key from our private store to decode
+
+```
+```
+
 b. A list of usernames that have available PINs on this server (not sure yet if the pink asterisk indicates anything important)
+
+```
+```
+
 c. A link to a "private store" location
+
+```
+```
 
 9. Visit the private store and using your username and pin. Load expendable scripts into your first few upgrade slots.
 
@@ -90,5 +101,17 @@ There will also be a `password.txt` file that will contain an encoded image. Dec
 12. Enjoy your T3 locs, and watch yourself :)
 
 
+Hints:
 
+ball, cat, bird, house, car, dog
+black, yellow, blue, green, white, red, orange, pink
+
+
+110_146_13<corrupt char>_305.dat
+```
+His+manner+was+not+effusive/+It+seldom+was/+but+he+was+glad+I+think+to+see+me/+With+hardly+a+word+spoken+but+
+with+a+kindly+eye+he+waved+me+to+an+armchair+threw+across+his+case+of+cigars+and+indicated+a+spirit+case+and+
+a+gasogene+in+the+corner/+Then+he+stood+before+the+fire+and+looked+me+over+in+his+singular+introspective+fash
+ion/
+```
 
