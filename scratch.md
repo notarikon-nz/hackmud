@@ -102,9 +102,10 @@ invitees:
 -theshrillery
 ```
 
-c. A link to a "private store" location
+c. A link to a "private store" location, e.g.
 
 ```
+futuretech.troy_cole_lzyzx1
 ```
 
 9. Visit the private store using your pin, `futuretech.troy_cole_lzyzx1 {pin:"0217"}`. Load expendable scripts into your first few upgrade slots. Now visit each file using the `i` parameter, e.g.
