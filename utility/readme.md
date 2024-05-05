@@ -4,8 +4,7 @@
 
 Clears unwanted upgrades - automatically culls grey/rarity 0 items, and (after confirmation) culls or lists on market other low level items, depending on the threshold value, which defaults to 1M GC.
 
-
-### keychain
+### [keychain](https://github.com/notarikon-nz/hackmud/blob/main/utility/keychain.js)
 
 Scans your upgrade list for all known l0ckets and if missing, tries to find them on the market, providing a command to copy & paste.
 
@@ -13,10 +12,10 @@ Scans your upgrade list for all known l0ckets and if missing, tries to find them
 
 Coming soon
 
-### lib
+### [lib](https://github.com/notarikon-nz/hackmud/blob/main/utility/lib.js)
 
 Example universal lib for storing information and/or functions - sorry, this has had spoilers removed :)
 
-### bank
+### [bank](https://github.com/notarikon-nz/hackmud/blob/main/utility/bank.js)
 
-Features withdraw and deposit functions to transfer money in & out of alt user. Utilises caller.name auth to prevent unauthorised access.
+Barebones example to transfer money in & out of alt user. Utilises context's caller info to prevent unauthorised access.
