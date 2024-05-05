@@ -15,7 +15,6 @@ function (context, args, username){
 
   // 
 	function authorise() {
-    // alternatively, use caller.calling_script and implement security on that end
 		return (context.calling_script.includes("your_username_here") || context.calling_script.includes("your_alts_username_here")) // this should be a database implementation
 	}
 
