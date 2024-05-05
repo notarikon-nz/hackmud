@@ -1,5 +1,9 @@
 ## T2 Scripts
 
+### web
+
+Lists active T2/T3 domains
+
 ### arcane_lock
 
 T2 Location Scraper
