@@ -1,14 +1,14 @@
 ## T2 Scripts
 
-### web
+### [web](https://github.com/notarikon-nz/hackmud/blob/main/t2/web.js)
 
 Lists active T2/T3 domains
 
-### arcane_lock
+### [arcane_lock](https://github.com/notarikon-nz/hackmud/blob/main/t2/arcane_lock.js)
 
 T2 Location Scraper
 
-### knock
+### [knock](https://github.com/notarikon-nz/hackmud/blob/main/t2/knock.js)
 
 T2 NPC Breacher
 
