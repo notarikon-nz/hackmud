@@ -18,23 +18,23 @@ function(cxt, arg, first, second) {
       r = #fs.scripts.get_level({name:domain})
       if (Number.isInteger(r)) {
         if (r <= 1)
-          t2.add({r:r,d:domain})
-        else
           t3.add({r:r,d:domain})
+        else
+          t2.add({r:r,d:domain})
       }
     }
   }
 
   o = "Active T2/3 Domains\n\n"
-  o += "`1T3`\n"
+  o += "`1T2`\n"
   
-  t3.forEach(function(value) {
+  t2.forEach(function(value) {
     sec = s[value.r]
     o += "  " + sec + " " + value.d + "\n"
   })
 
-  o += "\n`1T2`\n"
-  t2.forEach(function(value) {
+  o += "\n`1T3`\n"
+  t3.forEach(function(value) {
     sec = s[value.r]
     o += "  " + sec + " " + value.d + "\n"
   })
