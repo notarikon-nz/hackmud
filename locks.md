@@ -12,12 +12,15 @@
   * [l0cket](#l0cket)
   * [DATA_CHECK](#data_check)
 * Tier 2
-  * [DATA_CHECK](#)
+  * [DATA_CHECK](#data_check-t2)
   * [CON_SPEC](#con_spec)
   * [magnara](#magnara)
   * [l0ckbox](#l0ckbox)
   * [acct_nt](#acct_nt)
   * [sn_w_glock](#sn_w_glock)
+* Tier 3 (Coming Soon)
+  * [DATA_CHECK](#data-check-t3)
+  * [l0ckjaw](#l0ckjaw)
 
 ## Tier 1
 
@@ -225,9 +228,37 @@ You have several options in order to lookup your information, regex, includes, h
 
 ### DATA_CHECK (T2)
 
+See [DATA_CHECK](#data_check) - T2 is the same method, with a larger set of questions and answers
+
 ### CON_SPEC
 
+When you first encounter a `CON_SPEC` lock, pass it an empty string:
+
+```abandoned_jrttl_walker.info_xk490x{CON_SPEC: ""}```
+
+The `CON_SPEC` lock comes in two variants: `weaver` and `wolf`. What version you face depends on your class. If you're a `weaver`, you'll be asked to solve a logic puzzle. If you're a wolf, you'll be asked to host a public script. 
+
+For the `weaver` puzzle, you'll see something like this:
+
+```ACEGIKM```
+
+Provide the next three letters in the sequence
+
+To solve it, you'll need to guess the next three letters in the sequence.
+
+In the example, the answer would be `OQS`, as the hint skips every second letter in the alphabet. There are **14** different patterns you will need to learn and store.
+
 ### magnara
+
+The `magnara` lock requires you to guess the correct anagram (notice the name) in order to break it. An example output looks like this:
+
+```recinroct magnara ulotnois orf: fuso```
+
+This translates to "incorrect anagram solution for: fuso". Your job is to take the characters after the colon ("fuso") and rearrange them until you break the lock.
+
+The number of letters you get from the lock depends on what tier the lock is, so brute forcing the answer (trying every possible combination) doesn't scale. A three character lock may only have 6 possible combinations but a 4 character lock has 24 possible combinations.
+
+You'll want to focus on results that are actual words. Those are more likely to be the correct answer. In this example, that would be `ufos`.
 
 ### l0ckbox
 
@@ -399,5 +430,16 @@ To make it easier to quickly transfer money between accounts, set up the followi
 /secure = accts.xfer_gc_to { to:"<username>", amount:"443GC" }
 /special = accts.xfer_gc_to { to:"<username>", amount:38 }
 ```
+
+## Tier 3
+
+### DATA_CHECK
+
+See [DATA_CHECK](#data_check) - T3 is the same method, with a larger set of questions and answers, some of which do not have available answers. This will require exploration of sites & channels, and decoded information.
+
+### l0ckjaw
+
+
+
 
 [^1]: See [npcs.md](https://github.com/notarikon-nz/hackmud/main/npcs.md) for more information
