@@ -20,7 +20,7 @@ function (context, args, username){
 
 	function withdraw(amount) {
 		if (isNaN(amount)) return;
-		return JSON.stringify( #ms.accts.xfer_gc_to({to:username,amount:amount}) )
+		// ---
 	}
 
 }
