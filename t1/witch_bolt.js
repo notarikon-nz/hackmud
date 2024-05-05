@@ -3,8 +3,9 @@ function(context, args){// t:#s.first.second
 	if (args == null || (args && typeof args === 'object' && !Object.keys(args).length))
 		return {ok:false, msg:"Usage: witch_bolt { t:#s.first.second } "}
 
-	var t = args.t;
-    var r = t.call({}) // get response with blank args
+	let t = args.t,
+		z = "",
+    	r = t.call({}) // get response with blank args
 
 	if (r.ok == false)
 		return "Incorrect Loc Format"
@@ -13,13 +14,11 @@ function(context, args){// t:#s.first.second
 		return {ok:false, msg:"Hardline required - activate with kernel.hardline"}
 	}
 
-	var z = ""
-
 	// call the remote loc with {} as the arguments
 	// if we get a response string, check for lock type
 	if(typeof r == 'string') {
 		// type_of_lock = the type of lock, e.g. DATA_CHECK
-		var type_of_lock = r.match(/(EZ_[0-9]+|c00[0-9]|l0cket|DATA_CHECK)` lock/)
+		let type_of_lock = r.match(/(EZ_[0-9]+|c00[0-9]|l0cket|DATA_CHECK)` lock/)
 	} else 
 	{
 		for(var fr in r) {
@@ -28,18 +27,13 @@ function(context, args){// t:#s.first.second
 		
 		return {ok:false, msg:"Invalid response: " +(typeof r)+ "\n" + z}
 	}
-	
 
-	var c = z, // ""
-		i = 0,
-		s = 0,
+	let i = 0,
 		loop_count = 1, // lock count
 		detail = "",
-		pc = "`2"
-
-	var payload = {r:r,c:{}}	// create a new struct, where r is our response and c is empty
-
-	var pa = ["derp", "open","unlock","release"],
+		pc = "`2",
+		payload = {r:r,c:{}},	// create a new struct, where r is our response and c is empty
+		pa = ["derp", "open","unlock","release"],
 		lk = {c001:"color_digit", c002:"c002_complement", c003:"c003_triad_", l0cket:"k3y"},
 		ln = ["c001", "c002", "c003", "l0cket"],
 		col = ["red", "purple", "blue", "cyan", "green", "lime", "yellow", "orange"],
@@ -47,7 +41,7 @@ function(context, args){// t:#s.first.second
 		d = [1,2,3,4,5,6,7,8,9,10,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101]
 
 	function ez_21(args) {
-		var _r = "not the cor",
+		let _r = "not the cor",
 			i = 0,
 			o = args.p,
 			l = args.l
@@ -60,7 +54,7 @@ function(context, args){// t:#s.first.second
 	}
 
 	function c00(args) {
-		var o = args.p,
+		let o = args.p,
 		l = args.l,
 		x = ""
 		i = 0
@@ -91,7 +85,7 @@ function(context, args){// t:#s.first.second
 	}
 
 	function ez_(args) {
-		var _o = args.p,
+		let _o = args.p,
 		l = args.l,
 		_ez = ez[l],
 		_r = "",
@@ -179,11 +173,8 @@ function(context, args){// t:#s.first.second
 		detail += "  12. Time Out\n"
 
 	// OUTPUT
-	var header = "Casting `JWitch Bolt` at `X" + t.name + "`\n\n"
-	var output = header + detail + z
-
-	return output
+	return 	"Casting `JWitch Bolt` at `X" + t.name + "`\n\n" +
+			header + detail + z
 	// will automatically add \n
 
 }
-
