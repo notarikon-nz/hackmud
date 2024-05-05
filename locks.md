@@ -1,3 +1,24 @@
+## Contents
+
+* [Tier 1](#tier-1)
+  * [CON_TELL](#con_tell)
+  * [w4rn_er and w4rn](#w4rn_er-and-w4rn)
+  * [EZ_21](#ez_21)
+  * [EZ_35](#ez_35)
+  * [EZ_40](#ez_40)
+  * [c001](#c001)
+  * [c002](#c002)
+  * [c003](@c003)
+  * [l0cket](#l0cket)
+  * [DATA_CHECK](#data_check)
+* Tier 2
+  * [DATA_CHECK](#)
+  * [CON_SPEC](#con_spec)
+  * [magnara](#magnara)
+  * [l0ckbox](#l0ckbox)
+  * [acct_nt](#acct_nt)
+  * [sn_w_glock](#sn_w_glock)
+
 ## Tier 1
 
 ### CON_TELL
@@ -16,7 +37,7 @@ The `w4rn_er` and `w4rn` locks aren't a lock in the tranditional sense. You can'
 
 When you encounter one of these locks, the lock will display a warning message to the attacking system. The content of the message can be changed by loading the `w4rn_message` upgrade.
 
-Originally, the length of a `w4rn_message` wasn't limited, so clever weavers could send massive amounts of data to the attacking system. This would make it almost impossible to play the game or even crash the client. Now, the message is limited to 100 characters.
+Originally, the length of a `w4rn_message` wasn't limited, so clever weavers[^1] could send massive amounts of data to the attacking system. This would make it almost impossible to play the game or even crash the client. Now, the message is limited to 100 characters.
 
 The only way you can use `w4rn` as a defense is by displaying a fake denied access message for lock you don't have and hope that whatever script is running against your system reads that line and gives up instead of the actual system message that appears right after it.
 
@@ -210,9 +231,112 @@ You have several options in order to lookup your information, regex, includes, h
 
 ### l0ckbox
 
+The `l0ckbox` lock requires that you have a certain k3y_v[1,2,3,4] upgrade loaded in order to break it. When you encounter a l0ckbox lock, it will generate a message like:
+
+```To unlock, please load the appropriate k3y: i874y3```
+
+In order to unlock the lock, this upgrade will need to be loaded on your system:
+
+```sys.manage{load: 12}```
+
+Unlike most locks, l0ckbox doesn't announce itself with a traditional "Denied access by" message, making it harder to detect using standard regular expressions. Instead, check the lock response for k3y: and attempt to capture what comes after the colon.
+
+Any breaching script you write will have to be lowsec or lower in order to manage what upgrades are available on the caller's system. See [utility/keychain.js](https://github.com/notarikon-nz/hackmud/blob/main/utility/keychain.js) for a script to check which keys you have & need.
+
 ### acct_nt
 
+The `acct_nt` lock is by far one of the most difficult T2 locks to crack. It requires you to run `accts.transactions`, review the deposits and withdrawls and then provide whatever amount it's asking for as the answer. This may require multiple runs of the breach script to get the correct answer.
 
+Possible acct_nt puzzles are:
+
+```
+What was the net GC between <start> and <end>
+Need to know the total earned on transactions without memos between <start> and <end>
+Need to know the total earned on transactions without memos between <start> and <end>
+Get me the amount of a large deposit near <date>
+Get me the amount of a large withdrawal near <date>
+```
+
+For example:
+
+```
+What was the net GC between 220515.0118 and 220518.0517
+Need to know the total earned on transactions without memos between 220515.0118 and 220518.1457
+Need to know the total earned on transactions without memos between 220515.0118 and 220518.1457
+Get me the amount of a large deposit near 220518.1458
+Get me the amount of a large withdrawal near 220519.1910
+```
+
+All dates will be in `YYMMDD.HHMM` format. Here's what is known so far:
+
+1. The most transactions that a lock can look at is the last 16
+2. If there are duplicate transactions on the same date, it could be referencing any of them to create the answer
+3. "near" can mean any transaction +/- 5 from the chosen date
+4. The number of transactions it reviews is based on the `acct_nt_min` property of the lock
+
+Research has shown that `acct_nt` uses one of the following formulas to choose the range of indexes it's going to use when building the answer:
+
+```
+startDateIndex to endDateIndex
+startDateIndex + 1 to endDateIndex
+startDateIndex to endDateIndex - 1
+startDateIndex + 1 to endDateIndex -1
+```
+
+The best way for you to break this lock by hand is to:
+
+1. Keep a 0GC balance on your account
+2. Flood your transaction list
+
+To flood your transaction list, transfer 1GC back and forth between your accounts until you have 16 total transactions (8 deposits and 8 withdrawls, one after the other). By doing this, you'll guarantee that the answer for the acct_nt lock will always be either 0GC or 1GC. It'll look a little like this when you're done:
+
+<details> 
+  <summary>Reveal Code</summary>
+  <code>
+{
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account1",
+"recipient": "account2",
+"script": null
+},
+{
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account2",
+"recipient": "acount1",
+"script": null
+}
+{
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account1",
+"recipient": "account2",
+"script": null
+},
+{
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account2",
+"recipient": "acount1",
+"script": null
+}
+{
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account1",
+"recipient": "account2",
+"script": null
+},
+{
+"time": "220520.2246",
+"amount": "1GC",
+"sender": "account2",
+"recipient": "acount1",
+"script": null
+}
+  </code>
+</details>
 
 ### sn_w_glock
 
@@ -275,3 +399,5 @@ To make it easier to quickly transfer money between accounts, set up the followi
 /secure = accts.xfer_gc_to { to:"<username>", amount:"443GC" }
 /special = accts.xfer_gc_to { to:"<username>", amount:38 }
 ```
+
+[^1]: See [npcs.md](https://github.com/notarikon-nz/hackmud/main/npcs.md) for more information
