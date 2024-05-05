@@ -1,6 +1,8 @@
 function(context, args){
 
-	// add authorisation here
+	// prevent other users from calling this lib directly
+	if (!context.calling_script.includes("notarikon"))
+		return;
 	
 	if(!args) {
 		return JSON.stringify(context);
