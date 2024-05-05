@@ -20,7 +20,7 @@ function (context, args, username){
 
 	function withdraw(amount) {
 		if (isNaN(amount)) return;
-		// ---
+		#ms.accts.xfer_gc_to_caller({amount:amount})
 	}
 
 }
