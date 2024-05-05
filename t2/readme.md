@@ -4,7 +4,7 @@
 
 Lists active T2/T3 domains
 
-### [arcane_lock](https://github.com/notarikon-nz/hackmud/blob/main/t2/arcane_lock.js) (coming soon)
+### [arcane_lock](https://github.com/notarikon-nz/hackmud/blob/main/t2/arcane_lock.js)
 
 T2 Location Scraper
 
