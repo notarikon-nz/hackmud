@@ -1,5 +1,7 @@
 ## T1 Scripts
 
+I've spaced these out, renamed variables, added comments and generally unminified them for readability.
+
 ### [augury](https://github.com/notarikon-nz/hackmud/blob/main/t1/augury.js)
 
 T1 Location Scraper
@@ -8,9 +10,7 @@ T1 Location Scraper
 
 T1 NPC Breacher
 
-## Do It Yourself
-
-I've spaced these out, added comments and generally unminified them for readability
+## do it yourself
 
 If you want to develop your own, here's a rough outline.
 
