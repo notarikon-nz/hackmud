@@ -16,7 +16,8 @@ T2 NPC Breacher
 * Ensure that before each MIDSEC run, 0GC is in account for Glock mitigation. HIGHSEC does not require this measure.
 * You need to have a free upgrade slot for loading & unloading keys to handle l0ckbox
 * Ideally, the ability to search for & buy keys from the market should be a feature
-* You need a bank script on an alt for sending you GC for glock or macros set up:
+* You need a bank script on an alt for sending you GC for glock or macros set up.
+   * Mine automatically transfers the correct amount to me within the script, this definitely recommended due to the delay of logging to an alt
 
  ```
 /beast = accts.xfer_gc_to { to:"<user>", amount:"666GC" }
