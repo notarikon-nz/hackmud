@@ -238,6 +238,8 @@ When you first encounter a `CON_SPEC` lock, pass it an empty string:
 
 The `CON_SPEC` lock comes in two variants: `weaver` and `wolf`. What version you face depends on your class. If you're a `weaver`, you'll be asked to solve a logic puzzle. If you're a wolf, you'll be asked to host a public script. 
 
+#### weaver
+
 For the `weaver` puzzle, you'll see something like this:
 
 ```ACEGIKM```
@@ -247,6 +249,36 @@ Provide the next three letters in the sequence
 To solve it, you'll need to guess the next three letters in the sequence.
 
 In the example, the answer would be `OQS`, as the hint skips every second letter in the alphabet. There are **14** different patterns you will need to learn and store.
+
+#### wolf
+
+For the scriptor lock you have to write a script (or run one) that is public. You will need a total of 4 variables to make this scriptor script function properly:
+```String, Digit, Count, and ScriptSpace```
+
+Scriptor: ```{ CON_SPEC : { call : ( {s, d} ) => s.split(d).length - 1 } }```
+
+The above is making a function: it takes 1 argument, which is expected to be an object with two properties named `s` and `d`. 
+
+It takes `s`, which it assumes is a string, and splits it on `d` (which can be anything). So, if the string is `foobarbaz` and d is `a`, then that would make `['foob','rb','z']`
+
+It then gets the length of that array (3) and subtracts 1, to get 2, which is the number of times `d` (i.e. `a`) appeared in the string
+
+The long version (for clarity) would be:
+```
+function(context, args) {
+    args = args || {}
+    var cnt = 0
+
+    for (var i = 0; i < args.s.length; i++){
+        if( args.d == args.s[i]){
+            cnt++
+        }
+    }
+
+  return cnt
+}
+```
+
 
 ### magnara
 
