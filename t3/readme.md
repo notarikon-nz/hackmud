@@ -2,7 +2,7 @@
 
 Highsec/Midsec corps never do anything to hurt you until you get to the locs. However, the deeper levels of the lowsec corps WILL activate defenses that destroy your upgrades, amongst other negative effects, if you aren't careful. Run it on your alt, period.
 
-1. Grab the active employees from your target size:
+1. Grab the active employees from your target sie:
 
 ```
 t3 {s:#s.archaic.emplogin,scan:true}
