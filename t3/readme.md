@@ -8,7 +8,7 @@ Highsec/Midsec corps never do anything to hurt you until you get to the locs. Ho
 t3 {s:#s.archaic.emplogin,scan:true}
 ```
 
-2. Cron your PIN brute force cracker and store the PINs in your local db, choose your username
+2. Cron your PIN brute force cracker and store the PINs in your local db (manual will net you 200-300 checks every 5+ seconds), choose your username
 
 Note: The 4-digit PIN is not a puzzle. There's no way to find them. You *have* to brute-force them, and run this in the background (unless you want to run the same script 30+ times.
 
