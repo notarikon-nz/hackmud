@@ -21,8 +21,8 @@
 * Tier 3 (Coming Soon)
   * [DATA_CHECK](#data-check-t3)
   * [l0ckjaw](#l0ckjaw)
-  * [usac](#usac)
-  * [a5](#a5)
+  * [sn_w_usac](#sn_w_usac)
+  * [shfflr](#shfflr)
   * [l0g_wr1t3r](#l0g_wr1t3r)
 
 ## Tier 1
