@@ -6,3 +6,38 @@ a+gasogene+in+the+corner/+Then+he+stood+before+the+fire+and+looked+me+over+in+hi
 ion/
 ```
 
+### Variants
+
+| corp | shell |
+|---|---|
+| archaic    |  FUTUREtech |
+| context    |  Archaic |
+| core       |  Archaic |
+| futuretech |  Archaic |
+| halperyon  |  #FUTUREtech |
+| light      |  sn_w |
+| nuutec     |  sn_w |
+| sn_w       |  FUTUREtech |
+
+### Commands
+
+* t_st
+* bo_s
+* we_k
+* m_g
+
+### Keys
+
+* WKo9PbL
+* 2iXs7XW
+
+## Reading List
+
+* Alice in Wonderland by Lewis Carroll
+* The Metamorphosis by Franz Kafka
+* The Red-Headed League by Sir Arthur Conan Doyle
+
+## Free Online Tools
+
+* http://freeonlinetools24.com/base64-image
+* 
