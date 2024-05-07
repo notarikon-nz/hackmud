@@ -24,6 +24,9 @@
   * [sn_w_usac](#sn_w_usac)
   * [shfflr](#shfflr)
   * [l0g_wr1t3r](#l0g_wr1t3r)
+* Tier 4
+  * [CON_A5V4H](#con_a5v4h)
+
 
 ## Tier 1
 
@@ -549,6 +552,28 @@ Starting from 3BGC
 }
 ```
 
+### CON_A5V4H
+
+Starting from 50BGC (you read that right)
+```
+{
+  i: "kl1ts3",
+  seller: "nex",
+  cost: "50BGC",
+  count: 1,
+  description: "-CONTEXT 027y CLASSIFIED-",
+  upgrade: {
+    rarity: "h4rdc0r3",
+    name: "CON_A5V4H",
+    type: "lock",
+    up_class: "none",
+    tier: 4,
+    loaded: false,
+    sn: "64430a031be6dd6683804c8e"
+  },
+  no_notify: true
+}
+```
 
 
 [^1]: See [npcs.md](https://github.com/notarikon-nz/hackmud/main/npcs.md) for more information
