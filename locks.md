@@ -25,7 +25,7 @@
   * [shfflr](#shfflr)
   * [l0g_wr1t3r](#l0g_wr1t3r)
 * Tier 4
-  * [DATA_CHECK_V4]{#data_check_v4)
+  * [DATA_CHECK_V4](#data_check_v4)
   * [CON_A5V4H](#con_a5v4h)
 
 
