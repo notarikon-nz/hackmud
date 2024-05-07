@@ -473,6 +473,8 @@ To make it easier to quickly transfer money between accounts, set up the followi
 See [DATA_CHECK](#data_check) - T3 is the same method, with a larger set of questions and answers, some of which do not have available answers. This will require exploration of sites & channels, and decoded information.
 
 ### l0ckjaw
+
+Starting from 2BGC
 ```
 {
   i: "8fn4nj",
@@ -496,6 +498,8 @@ See [DATA_CHECK](#data_check) - T3 is the same method, with a larger set of ques
 ```
 
 ### shfflr
+
+Starting from 2BGC
 ```
 {
 	i: "gew4f9",
@@ -522,6 +526,8 @@ See [DATA_CHECK](#data_check) - T3 is the same method, with a larger set of ques
 ```
 
 ### sn_w_usac
+
+Starting from 3BGC
 ```
 {
   i: "62ssoo",
