@@ -473,7 +473,75 @@ To make it easier to quickly transfer money between accounts, set up the followi
 See [DATA_CHECK](#data_check) - T3 is the same method, with a larger set of questions and answers, some of which do not have available answers. This will require exploration of sites & channels, and decoded information.
 
 ### l0ckjaw
+```
+{
+  i: "8fn4nj",
+  seller: "faith",
+  cost: "2BGC",
+  count: 1,
+  description: "The l0ckjaw from nuutec is like a guard dog for your secrets. Hopefully no one brings a steak.",
+  upgrade: {
+    rarity: "kiddie",
+    name: "l0ckjaw",
+    type: "lock",
+    up_class: "none",
+    tier: 3,
+    loaded: false,
+    count: 37,
+    expire_secs: 300,
+    sn: "6607d1551be6dd4fd60c8e7e"
+  },
+  no_notify: true
+}
+```
 
+### shfflr
+```
+{
+	i: "gew4f9",
+	seller: "faith",
+	cost: "2BGC",
+	count: 1,
+	description: "just did was here.
+	upgrade: {
+	rarity: "kiddie",
+	name: "shfflr",
+	type: "lock",
+	up_class: "none",
+	tier: 3,
+	loaded: false,
+	up_count_min: 4,
+	up_count_max: 64,
+	name_count: 2,
+	rarity_count: 2,
+	digits: 2,
+	sn: "660704061be6dd101d69cf86"
+	},
+	no_notify: true
+}
+```
+
+### sn_w_usac
+```
+{
+  i: "62ssoo",
+  seller: "faith",
+  cost: "3BGC",
+  count: 1,
+  description: "0110111101101101011011100110111101101101011011100110111101101101",
+  upgrade: {
+    rarity: "h4x0r",
+    name: "sn_w_usac",
+    type: "lock",
+    up_class: "none",
+    tier: 3,
+    loaded: false,
+    salt_digits: 1,
+    sn: "6612a3e31be6dd453f4c4516"
+  },
+  no_notify: true
+}
+```
 
 
 
