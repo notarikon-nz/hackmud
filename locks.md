@@ -25,6 +25,7 @@
   * [shfflr](#shfflr)
   * [l0g_wr1t3r](#l0g_wr1t3r)
 * Tier 4
+  * [DATA_CHECK_V4]{#data_check_v4)
   * [CON_A5V4H](#con_a5v4h)
 
 
@@ -549,6 +550,31 @@ Starting from 3BGC
     sn: "6612a3e31be6dd453f4c4516"
   },
   no_notify: true
+}
+```
+
+## Tier 4
+
+### DATA_CHECK_V4
+
+Starting from 9BGC
+```
+{
+  i: "9o28al",
+  seller: "mark1t",
+  cost: "9BGC",
+  count: 1,
+  description: "it is valuable to verify the common elements of trust's truth, and other truths besides",
+  upgrade: {
+    rarity: "kiddie",
+    name: "DATA_CHECK_V4",
+    type: "lock",
+    up_class: "none",
+    tier: 4,
+    loaded: false,
+    acc_mod: 5,
+    sn: "6143a4e31be6dd5da9977512"
+  }
 }
 ```
 
