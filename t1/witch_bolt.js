@@ -14,20 +14,6 @@ function(context, args){// t:#s.first.second
 		return {ok:false, msg:"Hardline required - activate with kernel.hardline"}
 	}
 
-	// call the remote loc with {} as the arguments
-	// if we get a response string, check for lock type
-	if(typeof r == 'string') {
-		// type_of_lock = the type of lock, e.g. DATA_CHECK
-		let type_of_lock = r.match(/(EZ_[0-9]+|c00[0-9]|l0cket|DATA_CHECK)` lock/)
-	} else 
-	{
-		for(var fr in r) {
-			z = z + fr + ": " + r[fr] + "\n"
-		}
-		
-		return {ok:false, msg:"Invalid response: " +(typeof r)+ "\n" + z}
-	}
-
 	let i = 0,
 		loop_count = 1, // lock count
 		detail = "",
@@ -38,7 +24,22 @@ function(context, args){// t:#s.first.second
 		ln = ["c001", "c002", "c003", "l0cket"],
 		col = ["red", "purple", "blue", "cyan", "green", "lime", "yellow", "orange"],
 		ez = {EZ_21:"", EZ_35:"digit", EZ_40:"ez_prime"},
-		d = [1,2,3,4,5,6,7,8,9,10,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101]
+		d = [1,2,3,4,5,6,7,8,9,10,11,13,17,19,23,29,31,37,41,43,47,53,59,61,67,71,73,79,83,89,97,101],
+		type_of_lock
+	
+	// call the remote loc with {} as the arguments
+	// if we get a response string, check for lock type
+	if(typeof r == 'string') {
+		// type_of_lock = the type of lock, e.g. DATA_CHECK
+		type_of_lock = r.match(/(EZ_[0-9]+|c00[0-9]|l0cket|DATA_CHECK)` lock/)
+	} else 
+	{
+		for(var fr in r) {
+			z = z + fr + ": " + r[fr] + "\n"
+		}
+		
+		return {ok:false, msg:"Invalid response: " +(typeof r)+ "\n" + z}
+	}
 
 	function ez_21(args) {
 		let _r = "not the cor",
