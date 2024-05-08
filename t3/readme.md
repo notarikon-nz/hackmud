@@ -12,6 +12,8 @@ t3 {s:#s.archaic.emplogin,scan:true}
 
 Note: The 4-digit PIN is not a puzzle. There's no way to find them. You *have* to brute-force them, and run this in the background (unless you want to run the same script 30+ times.
 
+Note 2: There are T1, T2 and T3 NPCs. If you try to get a PIN for a T1/T2 user...
+
 3. [Clairvoyance](https://github.com/notarikon-nz/hackmud/blob/main/t3/clairvoyance.js) pulls the username/PIN combo from your db and scrapes the information from the t3 site - og (store new), c and oss. Ensures that each pass a sacrificial upgrade in 000 slot
 
 4. User reviews decrypted information (manual step) and retrieves passphrase, which is fed into Clairvoyance as an optionl argument to retrieve T3 locs
