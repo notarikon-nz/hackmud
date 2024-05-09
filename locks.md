@@ -408,6 +408,17 @@ To flood your transaction list, transfer 1GC back and forth between your account
   </code>
 </details>
 
+The user n00bish provided the following information/help:
+
+- It has two important features: offset and range
+- They are static values set at each lock rotation, based on rarity of the lock
+- Each puzzle type and the text it provides are generated from your tx log and the two values above
+- Changes in timestamps and wording are due to the answer changing as transactions shift around, but the solve offset/range remain static
+- A wrong answer one attempt may be a correct answer the next attempt if a transaction happened in between
+- The two values in the text specify in order: range, offset.  In the single value text, the date specifies the *offset* - range is unknown and must be guessed.
+- Datestamps are fuzzy, but no more than "one minute" in either direction.
+- Some offset / range combinations are more likely than others.
+
 ### sn_w_glock
 
 All MIDSEC and lower targets will contain a `sn_w_glock`, so before attempting to breach (or automatically doing so in your script) you should set your account balance to 0. If you provide it with an incorrect answer, it will take money from your account. The higher tier versions of the lock will take more money than lower tiers. There is a good chance you could lose everything.
