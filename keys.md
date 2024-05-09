@@ -1,14 +1,16 @@
 ### K3ys
 
+_Credit to the fine folks on the HackMUD discord for the following research_
+
 There are 16 of each Tier of Key
 
-Locks such as l0cket require you to know the values of T1 keys. Later locks like l0ckbox & l0ckjaw require you to have them in your upgrade slots and/or loaded
+Locks such as `l0cket` require you to know the values of T1 keys. Later locks like `l0ckbox` & `l0ckjaw` require you to have them in your upgrade slots and/or loaded
 
-To begin your collection, start with the 8 most common t1 k3ys on the market, and 8 t1 npcs.  Each t1 npc adds one of the remaining k3ys to the market.
+To begin your collection, start with the 8 most common t1 k3ys on the market, and start hacking t1 npcs.  
 
-Hacking any T1 also gives you access to 16 t2s. *Each T2 adds a T2 k3y to the market*
-
-Hack any T2 to get access to 16 T3s. *Each T3 adds a T3 k3y to the market.*
+* Each t1 npc adds one of the remaining k3ys to the market. Hacking any T1 also gives you access to 16 t2s.
+* Each T2 adds a T2 k3y to the market, and hacking T2s has a chance to drop 16 T3s.
+* Each T3 adds a T3 k3y to the market.
 
 You can either hack all the things to get all the k3ys to make higher tiers easier, or hope for luck when you loot an NPC
 
