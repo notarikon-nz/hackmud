@@ -106,6 +106,38 @@ function parseQuery(query) {
     return result;
 }
 ```
+#### minified
+```
+function pQ(q) {
+    const r = { t: '', sD: '', eD: '', d: '' };
+
+    if (q.includes("net")) {
+        r.t = 'netGC';
+        const ds = q.match(/(\d{6}\.\d{4})/g);
+        if (!ds || ds.length !== 2) throw new Error("Invalid net GC dates.");
+        [r.sD, r.eD] = ds;
+    } else if (q.includes("without")) {
+        r.t = 'totalEarnedWithoutMemos';
+        const ds = q.match(/(\d{6}\.\d{4})/g);
+        if (!ds || ds.length !== 2) throw new Error("Invalid memo-free tx dates.");
+        [r.sD, r.eD] = ds;
+    } else if (q.includes("deposit")) {
+        r.t = 'largeDepositNear';
+        const d = q.match(/(\d{6}\.\d{4})/);
+        if (!d) throw new Error("Invalid date for large deposit.");
+        r.d = d[0];
+    } else if (q.includes("withdrawal")) {
+        r.t = 'largeWithdrawalNear';
+        const d = q.match(/(\d{6}\.\d{4})/);
+        if (!d) throw new Error("Invalid date for large withdrawal.");
+        r.d = d[0];
+    } else {
+        throw new Error("Query type unknown.");
+    }
+
+    return r;
+}
+```
 ### isWithinRange(transactionTime, startDate, endDate)
 Determines if a transaction's timestamp is within a specified date range.
 ```
