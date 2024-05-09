@@ -1,7 +1,8 @@
 # acct_nt
 
 To tackle the acct_nt lock in HackMUD, you'll need to carefully process transaction data based on the specific requirements outlined in each puzzle prompt. 
-The key will be parsing the transaction log, calculating the required values, and handling the specifics of date ranges and potential duplications.
+
+The key will be parsing the transaction log (retrievable with `#hs.accts.transactions({count:16})`, calculating the required values, and handling the specifics of date ranges and potential duplications.
 Here's a strategy breakdown:
 
 **1. Calculate the net amount of GC (Gold Coins) over a specified period.**
