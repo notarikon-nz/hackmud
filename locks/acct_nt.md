@@ -56,6 +56,26 @@ function solveAcctNt(transactions, query) {
     return result;
 }
 ```
+#### minified
+```
+function sANT(txs, q) {
+    const r = pQ(q);
+    const fltTxs = txs.filter(tx => iWR(tx.time, r.sD, r.eD) && mC(tx, r.t));
+
+    switch (r.t) {
+        case 'netGC':
+            return cNGC(fltTxs);
+        case 'totalEarnedWithoutMemos':
+            return cT(fltTxs);
+        case 'largeDepositNear':
+        case 'largeWithdrawalNear':
+            return fLTN(fltTxs, r.d);
+        default:
+            throw new Error("Unknown query type.");
+    }
+}
+```
+
 ### parseQuery(query)
 * Type Detection: The function first checks what type of query is being processed. This is done by looking for specific keywords in the query string that match known patterns.
 * Date Extraction: For each type of query, the function uses a regular expression (/(\d{6}\.\d{4})/g) to find matches for the date format YYMMDD.HHMM. It checks if the expected number of dates are present and throws an error if not.
@@ -159,6 +179,16 @@ function parseDateToTimestamp(date) {
     return new Date(year, month, day, hour, minute).getTime();
 }
 ```
+####
+minified
+####
+```
+function iWR(txT, sD, eD) {
+    const pDT = d => new Date(2000 + parseInt(d.slice(0,2)), parseInt(d.slice(2,4)) - 1, parseInt(d.slice(4,6)), parseInt(d.slice(7,9)), parseInt(d.slice(9))).getTime();
+    return pDT(txT) >= pDT(sD) && pDT(txT) <= pDT(eD);
+}
+```
+
 ### matchesCriteria(transaction, type)
 Checks if a transaction matches the specific criteria based on the query type, such as whether it lacks a memo.
 ```
@@ -170,6 +200,13 @@ function matchesCriteria(transaction, type) {
     return true;
 }
 ```
+#### minified
+```
+function mC(tx, t) {
+    return t === 'totalEarnedWithoutMemos' ? tx.script === null : true;
+}
+```
+
 ### calculateNetGC(transactions) 
 Calculates the net GC by summing deposits and subtracting withdrawals over a range of transactions.
 ```
@@ -186,6 +223,16 @@ function calculateNetGC(transactions) {
     return netGC;
 }
 ```
+#### minified
+```
+function cNGC(txs) {
+    return txs.reduce((net, tx) => {
+        const amt = parseFloat(tx.amount.replace('GC', ''));
+        return tx.recipient === 'yourAccount' ? net + amt : tx.sender === 'yourAccount' ? net - amt : net;
+    }, 0);
+}
+```
+
 ### calculateTotal(transactions)
 Calculates the total GC for transactions that meet specific criteria, like not having a memo.
 ```
@@ -196,6 +243,13 @@ function calculateTotal(transactions) {
     }, 0);
 }
 ```
+#### minified
+```
+function cT(txs) {
+    return txs.reduce((total, tx) => tx.script === null ? total + parseFloat(tx.amount.replace('GC', '')) : total, 0);
+}
+```
+
 ### findLargeTransactionNear(transactions, targetDate)
 Finds the amount of the largest deposit or withdrawal near a specified date.
 ```
@@ -216,3 +270,19 @@ function findLargeTransactionNear(transactions, targetDate) {
     return largestTransaction.amount;
 }
 ````
+#### minified
+```
+function fLTN(txs, d) {
+    const targetTime = pDT(d);
+    return txs.filter(tx => Math.abs(pDT(tx.time) - targetTime) <= 300000) // 300000 ms = 5 minutes
+              .reduce((max, tx) => {
+                  const amt = parseFloat(tx.amount.replace('GC', ''));
+                  return amt > max ? amt : max;
+              }, 0);
+}
+
+function pDT(d) {
+    return new Date(2000 + parseInt(d.slice(0,2)), parseInt(d.slice(2,4)) - 1, parseInt(d.slice(4,6)), parseInt(d.slice(7,9)), parseInt(d.slice(9))).getTime();
+}
+```
+
