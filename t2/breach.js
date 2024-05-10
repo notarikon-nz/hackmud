@@ -1,36 +1,39 @@
 function(context, args)// t:#s.unknown_jrttl_820zd5.entry_97kjq
 {
-  // REFACTORED KNOCK SCRIPT
-  // WIP
-  
-  // drop keys
+	// REFACTORED KNOCK SCRIPT
+	// WIP
+	
+	// drop keys
 	unload_keys(upg)
 	
 	// precompile regex
-  const magnara_pattern = /\b(\w+)$/
-  const conspec_pattern = /\w{3}(?=\n)/
-  const termination_pattern = /Connection terminated/
-  const memo_pattern = /with memos/
-  const net_pattern = / net /
+	const magnara_pattern = /\b(\w+)$/
+	const conspec_pattern = /\w{3}(?=\n)/
+	const termination_pattern = /Connection terminated/
+	const memo_pattern = /with memos/
+	const net_pattern = / net /
 
 	// split outside of loops
 	let az = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("") // a to z
-
-  while (timeout_checker(3900)) {
-      if (!response) {
-          report["err"] = "no target";
-          break;
-      }
-  
-      if (terminationPattern.test(response)) {
-          report["success"] = true;
-          break;
-      } else {
-          processResponse(response); // Handles all response processing
-      }
-  
-      update_calls();
-  }
+	let last_calls = 0, total_calls = 0
+	
+	call_get_response()
+	
+	while (timeout_checker(3900)) {
+		if (!response) {
+			report["err"] = "no target";
+			break;
+		}
+		
+		if (terminationPattern.test(response)) {
+			report["success"] = true;
+			break;
+		} else {
+			processResponse(response); // Handles all response processing
+		}
+		
+		update_calls();
+	}
 
 	// output object
 	report["keys"] = keys
