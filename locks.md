@@ -322,7 +322,7 @@ Possible acct_nt puzzles are:
 ```
 What was the net GC between <start> and <end>
 Need to know the total earned on transactions without memos between <start> and <end>
-Need to know the total earned on transactions without memos between <start> and <end>
+Need to know the total earned on transactions with memos between <start> and <end>
 Get me the amount of a large deposit near <date>
 Get me the amount of a large withdrawal near <date>
 ```
