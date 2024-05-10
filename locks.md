@@ -419,6 +419,8 @@ The user n00bish provided the following information/help:
 - Datestamps are fuzzy, but no more than "one minute" in either direction.
 - Some offset / range combinations are more likely than others.
 
+Also see: [https://www.reddit.com/r/hackmud/comments/574klr/psa_acct_nt_notes_and_t2_tactics_in_general/](https://www.reddit.com/r/hackmud/comments/574klr/psa_acct_nt_notes_and_t2_tactics_in_general/)
+
 ### sn_w_glock
 
 All MIDSEC and lower targets will contain a `sn_w_glock`, so before attempting to breach (or automatically doing so in your script) you should set your account balance to 0. If you provide it with an incorrect answer, it will take money from your account. The higher tier versions of the lock will take more money than lower tiers. There is a good chance you could lose everything.
