@@ -41,6 +41,8 @@ In order to get past a `CON_TELL` lock, simply call the system you're trying to 
 
 The main purpose of this lock (and others like it) is to eat up the execution time of any automated scripts that are attempting to breach the system. In this case, `CON_TELL`'s use of `chats.tell` takes up several ms of execution time (depending on server load). The more time the script wastes getting past these locks, the less time it has to attempt to breach the real locks guarding the system.
 
+---
+
 ### w4rn_er and w4rn
 
 The `w4rn_er` and `w4rn` locks aren't a lock in the tranditional sense. You can't break them, you can only move past them.
@@ -55,6 +57,8 @@ If any user does load a `w4rn` on their system, they do it to post memes and ins
 
 **The above are mentioned as any PVP breacher will want to account for these**
 
+---
+
 ### EZ_21
 
 To break an `EZ_21` lock, you need to provide one of three possible unlock commands: 
@@ -64,6 +68,8 @@ To break an `EZ_21` lock, you need to provide one of three possible unlock comma
 An attempt at breaking an `EZ_21` lock might look something like this:
 
 ```abandoned_jrttl_walker.info_xk490x{EZ_21: "unlock"}```
+
+---
 
 ### EZ_35
 
@@ -76,6 +82,8 @@ The lock also requires a digit parameter with a value between 0 and 9 (inclusive
 An attempt at breaking an `EZ_35` lock might look something like this:
 
 ```abandoned_jrttl_walker.info_xk490x{EZ_35: "unlock", digit: 5}```
+
+---
 
 ### EZ_40
 
@@ -92,6 +100,8 @@ An attempt at breaking an `EZ_40` lock might look something like this:
 Possible prime numbers are:
 
 ```2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, and 97. ```
+
+---
 
 ### c001
 To break a `c001` lock, you need to provide the correct color from the Hackmud color wheel:
@@ -112,6 +122,8 @@ Please note that the order of these colors is important. The lock also requires 
 An attempt at breaking an `c001` lock might look something like this:
 
 ``` abandoned_jrttl_walker.info_xk490x{c001: "red", color_digit: 3} ```
+
+---
 
 ### c002
 
@@ -141,6 +153,8 @@ To calculate the value of `c002_complement`, use the following formula:
 An attempt at breaking an `c002` lock might look something like this:
 
 ``` abandoned_jrttl_walker.info_xk490x{c002: "green", c002_complement: "red"} ```
+
+---
 
 ### c003
 To break a `c003` lock, you need to provide the correct color from the Hackmud color wheel:
@@ -176,6 +190,8 @@ An attempt at breaking an `c003` lock might look something like this:
 
 ```abandoned_jrttl_walker.info_xk490x{c003: "green", c003_triad_1: "orange", c003_triad_2: "purple"}```
 
+---
+
 ### l0cket
 
 To break a `l0cket` lock, you'll need a list of passwords. These passwords can be obtained by finding or purchasing `k3y_v<number>` upgrades. The number after the v represents the tier of the upgrade. Each key contains a possible password that can be used to unlock a locket lock. To view the password in a security `k3y`, use `full: true` when viewing upgrades:
@@ -209,6 +225,8 @@ An attempt at breaking a l0cket lock might look something like this:
 
 ```abandoned_jrttl_walker.info_xk490x{l0cket: "vc2c7q"}```
 
+---
+
 ### DATA_CHECK
 
 When you encounter a `DATA_CHECK` lock, you'll receive the standard "Denied Access" message like any other lock. First, pass in an empty string:
@@ -238,6 +256,8 @@ Check out the in-game information at `eve.monitor {eve:true, pass:"activemonitor
 ### DATA_CHECK (T2)
 
 See [DATA_CHECK](#data_check) - T2 is the same method, with a larger set of questions and answers
+
+---
 
 ### CON_SPEC
 
@@ -326,6 +346,8 @@ if (lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird
 </code>
 </details>
 
+---
+
 ### magnara
 
 The `magnara` lock requires you to guess the correct anagram (notice the name) in order to break it. An example output looks like this:
@@ -337,6 +359,29 @@ This translates to "incorrect anagram solution for: fuso". Your job is to take t
 The number of letters you get from the lock depends on what tier the lock is, so brute forcing the answer (trying every possible combination) doesn't scale. A three character lock may only have 6 possible combinations but a 4 character lock has 24 possible combinations.
 
 You'll want to focus on results that are actual words. Those are more likely to be the correct answer. In this example, that would be `ufos`.
+
+<details> 
+  <summary>free solution</summary>
+  <code>
+
+	const pat_mag = /\b(\w+)$/	
+	  
+	// Optimize regex by directly capturing the last word without using boundaries if context allows
+	let lwm = rsp.match(pat_mag);  // lwm = Last Word Match Ensure there's a match before accessing
+
+	let letters = lwm ? lwm[1] : "";  // Safeguard against null if no match
+
+	let ans = #fs.dictionary.lookup({ letters }); // Assuming dictionary lookup is necessary and can't be optimized without more context
+
+	if (ans.msg && ans.msg.length) {	// Check if answers.msg is valid and non-empty to avoid errors
+		keys[MAGNARA] = ans.msg[Math.floor(Math.random() * ans.msg.length)];
+	} else {
+		keys[MAGNARA] = "No valid answers found";  // Default or error handling message
+	}	  
+  </code>
+</details>
+
+---
 
 ### l0ckbox
 
@@ -351,6 +396,14 @@ In order to unlock the lock, this upgrade will need to be loaded on your system:
 Unlike most locks, l0ckbox doesn't announce itself with a traditional "Denied access by" message, making it harder to detect using standard regular expressions. Instead, check the lock response for k3y: and attempt to capture what comes after the colon.
 
 Any breaching script you write will have to be lowsec or lower in order to manage what upgrades are available on the caller's system. See [utility/keychain.js](https://github.com/notarikon-nz/hackmud/blob/main/utility/keychain.js) for a script to check which keys you have & need.
+
+<details> 
+  <summary>weaver solution</summary>
+  <code>
+  </code>
+</details>
+
+---
 
 ### acct_nt
 
@@ -460,6 +513,8 @@ The user n00bish provided the following information/help:
 
 Also see: [https://www.reddit.com/r/hackmud/comments/574klr/psa_acct_nt_notes_and_t2_tactics_in_general/](https://www.reddit.com/r/hackmud/comments/574klr/psa_acct_nt_notes_and_t2_tactics_in_general/)
 
+---
+
 ### sn_w_glock
 
 All MIDSEC and lower targets will contain a `sn_w_glock`, so before attempting to breach (or automatically doing so in your script) you should set your account balance to 0. If you provide it with an incorrect answer, it will take money from your account. The higher tier versions of the lock will take more money than lower tiers. There is a good chance you could lose everything.
@@ -522,11 +577,19 @@ To make it easier to quickly transfer money between accounts, set up the followi
 /special = accts.xfer_gc_to { to:"<username>", amount:38 }
 ```
 
+<details> 
+  <summary>weaver solution</summary>
+  <code>
+  </code>
+</details>
+
 ## Tier 3
 
 ### DATA_CHECK
 
 See [DATA_CHECK](#data_check) - T3 is the same method, with a larger set of questions and answers, some of which do not have available answers. This will require exploration of sites & channels, and decoded information.
+
+---
 
 ### l0ckjaw
 
@@ -552,6 +615,8 @@ Starting from 2BGC
   no_notify: true
 }
 ```
+
+---
 
 ### shfflr
 
@@ -580,6 +645,8 @@ Starting from 2BGC
 	no_notify: true
 }
 ```
+
+---
 
 ### sn_w_usac
 
@@ -629,6 +696,8 @@ Starting from 9BGC
   }
 }
 ```
+
+---
 
 ### CON_A5V4H
 
