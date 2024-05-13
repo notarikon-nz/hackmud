@@ -311,38 +311,39 @@ function(context, args) {
 <details> 
   <summary>weaver solution</summary>
   <code>
-const matchResult = patternRegex.exec(response);
-// Always check for null result from regex execution to avoid errors.
-if (!matchResult) return;
+	  
+	const matchResult = patternRegex.exec(response);
+	// Always check for null result from regex execution to avoid errors.
+	if (!matchResult) return;
 
-// Convert matched sequence into indices based on 'az' character array.
-const characterIndices = matchResult[0].split("").map(character => az.indexOf(character));
+	// Convert matched sequence into indices based on 'az' character array.
+	const characterIndices = matchResult[0].split("").map(character => az.indexOf(character));
 
-// Calculate the differences between consecutive indices to determine numeric relationships.
-const indexDifferences = [
-    characterIndices[2] - characterIndices[1], // Difference between the third and second index.
-    characterIndices[1] - characterIndices[0]  // Difference between the second and first index.
-];
+	// Calculate the differences between consecutive indices to determine numeric relationships.
+	const indexDifferences = [
+    		characterIndices[2] - characterIndices[1], // Difference between the third and second index.
+    		characterIndices[1] - characterIndices[0]  // Difference between the second and first index.
+	];
 
-// Store the last matched index for easier access and to improve readability.
-const lastMatchedIndex = characterIndices[2];
+	// Store the last matched index for easier access and to improve readability.
+	const lastMatchedIndex = characterIndices[2];
 
-// Store numeric relationships for clearer and more straightforward calculations.
-const stepBetweenSecondAndThird = indexDifferences[0];
-const stepBetweenFirstAndSecond = indexDifferences[1];
+	// Store numeric relationships for clearer and more straightforward calculations.
+	const stepBetweenSecondAndThird = indexDifferences[0];
+	const stepBetweenFirstAndSecond = indexDifferences[1];
 
-// Calculate the next three characters in the sequence based on the identified pattern.
-// The sequence is determined by adding calculated steps to the last known index.
-keys.CON_SPEC = az[lastMatchedIndex + stepBetweenFirstAndSecond] +
+	// Calculate the next three characters in the sequence based on the identified pattern.
+	// The sequence is determined by adding calculated steps to the last known index.
+	keys.CON_SPEC = az[lastMatchedIndex + stepBetweenFirstAndSecond] +
                 az[lastMatchedIndex + stepBetweenFirstAndSecond + stepBetweenSecondAndThird] +
                 az[lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird];
 
-// Check if any calculated index goes out of bounds of the 'az' array to prevent runtime errors.
-if (lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird >= az.length ||
-    lastMatchedIndex + stepBetweenFirstAndSecond < 0) {
-    report.err = "CON_SPEC Index out of bounds";
-    return;
-}
+	// Check if any calculated index goes out of bounds of the 'az' array to prevent runtime errors.
+	if (lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird >= az.length ||
+    	lastMatchedIndex + stepBetweenFirstAndSecond < 0) {
+    		report.err = "CON_SPEC Index out of bounds";
+    		return;
+	}
 </code>
 </details>
 
@@ -398,7 +399,7 @@ Unlike most locks, l0ckbox doesn't announce itself with a traditional "Denied ac
 Any breaching script you write will have to be lowsec or lower in order to manage what upgrades are available on the caller's system. See [utility/keychain.js](https://github.com/notarikon-nz/hackmud/blob/main/utility/keychain.js) for a script to check which keys you have & need.
 
 <details> 
-  <summary>weaver solution</summary>
+  <summary>placeholder</summary>
   <code>
   </code>
 </details>
@@ -453,7 +454,7 @@ The best way for you to break this lock by hand is to:
 To flood your transaction list, transfer 1GC back and forth between your accounts until you have 16 total transactions (8 deposits and 8 withdrawls, one after the other). By doing this, you'll guarantee that the answer for the acct_nt lock will always be either 0GC or 1GC. It'll look a little like this when you're done:
 
 <details> 
-  <summary>Reveal Code</summary>
+  <summary>Example Transactions</summary>
   <code>
 {
 "time": "220520.2246",
@@ -578,7 +579,7 @@ To make it easier to quickly transfer money between accounts, set up the followi
 ```
 
 <details> 
-  <summary>weaver solution</summary>
+  <summary>placeholder</summary>
   <code>
   </code>
 </details>
