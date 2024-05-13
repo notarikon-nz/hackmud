@@ -324,6 +324,7 @@ if (lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird
     return;
 }
 </code>
+</details>
 
 ### magnara
 
