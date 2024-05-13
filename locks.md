@@ -309,41 +309,34 @@ function(context, args) {
 ```
 
 <details> 
-  <summary>weaver solution</summary>
+  <summary>pseudocode</summary>
   <code>
 	  
-	const matchResult = /\w{3}(?=\n)/.exec(response);
-	// Always check for null result from regex execution to avoid errors.
-	if (!matchResult) return;
+	1. Execute the regex pattern on the response and store the result in matchResult
+	2. If matchResult is null, then:
+	    2.1 Exit the function (return)
+	
+	3. Convert the matched sequence from matchResult into indices based on the character array 'az':
+	    3.1 For each character in the matched sequence:
+	        3.1.1 Determine its index in 'az' and store it in characterIndices
+	
+	4. Calculate differences between consecutive indices to identify numeric relationships:
+	    4.1 Calculate the difference between the third and second index and store it as stepBetweenSecondAndThird
+	    4.2 Calculate the difference between the second and first index and store it as stepBetweenFirstAndSecond
+	
+	5. Store the index of the last character in the sequence for easier access as lastMatchedIndex
+	
+	6. Compute the next three characters in the sequence based on the identified steps:
+	    6.1 First character is at index 'lastMatchedIndex + stepBetweenFirstAndSecond' in 'az'
+	    6.2 Second character is at index 'lastMatchedIndex + stepBetweenFirstAndSecond + stepBetweenSecondAndThird' in 'az'
+	    6.3 Third character is at index 'lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird' in 'az'
+	    6.4 Store the concatenation of these characters in keys.CON_SPEC
+	
+	7. Check if any of the calculated indices goes beyond the boundaries of the 'az' array:
+	    7.1 If the index of any calculated character is greater than or equal to the length of 'az' or less than 0:
+	        7.1.1 Store an error message "CON_SPEC Index out of bounds" in report.err
+	        7.1.2 Exit the function (return)
 
-	// Convert matched sequence into indices based on 'az' character array.
-	const characterIndices = matchResult[0].split("").map(character => az.indexOf(character));
-
-	// Calculate the differences between consecutive indices to determine numeric relationships.
-	const indexDifferences = [
-    		characterIndices[2] - characterIndices[1], // Difference between the third and second index.
-    		characterIndices[1] - characterIndices[0]  // Difference between the second and first index.
-	];
-
-	// Store the last matched index for easier access and to improve readability.
-	const lastMatchedIndex = characterIndices[2];
-
-	// Store numeric relationships for clearer and more straightforward calculations.
-	const stepBetweenSecondAndThird = indexDifferences[0];
-	const stepBetweenFirstAndSecond = indexDifferences[1];
-
-	// Calculate the next three characters in the sequence based on the identified pattern.
-	// The sequence is determined by adding calculated steps to the last known index.
-	keys.CON_SPEC = az[lastMatchedIndex + stepBetweenFirstAndSecond] +
-                az[lastMatchedIndex + stepBetweenFirstAndSecond + stepBetweenSecondAndThird] +
-                az[lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird];
-
-	// Check if any calculated index goes out of bounds of the 'az' array to prevent runtime errors.
-	if (lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird >= az.length ||
-    	lastMatchedIndex + stepBetweenFirstAndSecond < 0) {
-    		report.err = "CON_SPEC Index out of bounds";
-    		return;
-	}
 </code>
 </details>
 
