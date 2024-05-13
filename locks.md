@@ -231,6 +231,8 @@ An attempt at breaking a `DATA_CHECK` lock might look something like this:
 
 You have several options in order to lookup your information, regex, includes, hashcode or public lib.
 
+Check out the in-game information at `eve.monitor {eve:true, pass:"activemonitoring"}`
+
 ## Tier 2
 
 ### DATA_CHECK (T2)
