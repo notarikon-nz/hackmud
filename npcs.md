@@ -26,8 +26,7 @@ The next two characters determine the rating of the NPCs system. The higher the 
 * pr: Phreakrig
 * ls: Leetstack
 
-The rating of the system is based on how many locks are loaded and their quality. Lock quality is calculated as 2^(lockTier)+LockRarity So a grey EZ_40 lock (tier1, 0 rarity) is worth 2 points towards system rating. 
-Possible system ratings and their points ranges are:
+The rating of the system is based on how many locks are loaded and their quality. Lock quality is calculated as 2^(lockTier)+LockRarity So a grey EZ_40 lock (tier1, 0 rarity) is worth 2 points towards system rating. Possible system ratings and their points ranges are:
 
 Junkrack (jr): 0-17
 Diggerdeck (dd): 18-29
@@ -37,7 +36,7 @@ Leetstack (ls): 70+
 
 ### Class
 
-The class of an NPC is determined by what type of upgrades are loaded. See System Rating - Class in the README for more information.
+The class of an NPC is determined by what type of upgrades are loaded, and by extension what loot they will drop when breached.
 
 * wvr: Most of your upgrades are architect class
 * ttl: Most of your upgrades are locks.
