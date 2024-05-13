@@ -312,7 +312,7 @@ function(context, args) {
   <summary>weaver solution</summary>
   <code>
 	  
-	const matchResult = patternRegex.exec(response);
+	const matchResult = /\w{3}(?=\n)/.exec(response);
 	// Always check for null result from regex execution to avoid errors.
 	if (!matchResult) return;
 
