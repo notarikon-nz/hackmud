@@ -288,6 +288,42 @@ function(context, args) {
 }
 ```
 
+<details> 
+  <summary>weaver solution</summary>
+  <code>
+const matchResult = patternRegex.exec(response);
+// Always check for null result from regex execution to avoid errors.
+if (!matchResult) return;
+
+// Convert matched sequence into indices based on 'az' character array.
+const characterIndices = matchResult[0].split("").map(character => az.indexOf(character));
+
+// Calculate the differences between consecutive indices to determine numeric relationships.
+const indexDifferences = [
+    characterIndices[2] - characterIndices[1], // Difference between the third and second index.
+    characterIndices[1] - characterIndices[0]  // Difference between the second and first index.
+];
+
+// Store the last matched index for easier access and to improve readability.
+const lastMatchedIndex = characterIndices[2];
+
+// Store numeric relationships for clearer and more straightforward calculations.
+const stepBetweenSecondAndThird = indexDifferences[0];
+const stepBetweenFirstAndSecond = indexDifferences[1];
+
+// Calculate the next three characters in the sequence based on the identified pattern.
+// The sequence is determined by adding calculated steps to the last known index.
+keys.CON_SPEC = az[lastMatchedIndex + stepBetweenFirstAndSecond] +
+                az[lastMatchedIndex + stepBetweenFirstAndSecond + stepBetweenSecondAndThird] +
+                az[lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird];
+
+// Check if any calculated index goes out of bounds of the 'az' array to prevent runtime errors.
+if (lastMatchedIndex + 2 * stepBetweenFirstAndSecond + stepBetweenSecondAndThird >= az.length ||
+    lastMatchedIndex + stepBetweenFirstAndSecond < 0) {
+    report.err = "CON_SPEC Index out of bounds";
+    return;
+}
+</code>
 
 ### magnara
 
