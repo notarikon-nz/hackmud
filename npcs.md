@@ -39,10 +39,24 @@ Leetstack (ls): 70+
 The class of an NPC is determined by what type of upgrades are loaded, and by extension what loot they will drop when breached.
 
 * wvr: Most of your upgrades are architect class
+  * public_script_vx
+  * cron_bot_vx
+  * public_script_vx
+  * char_count_vx
 * ttl: Most of your upgrades are locks.
+  * magnara
+  * w4rn
+  * w4rn_er
+  * ez_35
+  * w4rn_message
 * wlf: Most of your upgrades are infiltrator class.
+  * expose_upgrades_vx
+  * expose_access_log_vx
+  * log_writer_vx
 * rvn: Most of your upgrades are scavenger class.
+  * transfer_vx
 * stg: Most of your upgrades are executive class.
+  * channel_count_vx
 
 ### Address
 
