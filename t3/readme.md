@@ -38,15 +38,7 @@ Note: The 4-digit PIN is not a puzzle. There's no way to find them. You *have* t
 * maybe certain users on the org chart can access past "currently unavailable" but others can't
 * maybe passing other args (for example, we've tried connect: true) as well as perform: "connect" or a_t: "m_g" will unlock it
 
-**resources:**
-
-(as always these could be scams, run at your own risk)
-
-* net.locs
-* matr1x.pin will brute pins if you have a user
-* ast.decrypt, dtr.deseancrypt, and max.decrypt will all decrypt t3 strings if passed the args {key: "<decryption key>", str: "<string to decrypt>"}
-
-info:
+**other info**
 * work-type corps: core, context, futuretech
 * a_t-type corps: light, nuutec
 * perform-type corps: archaic, halperyon, sn_w
