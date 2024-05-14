@@ -26,17 +26,6 @@ ion/
 * we_k
 * m_g
 
-### Keys
-
-* WKo9PbL
-* 2iXs7XW
-
-## Reading List
-
-* Alice in Wonderland by Lewis Carroll
-* The Metamorphosis by Franz Kafka
-* The Red-Headed League by Sir Arthur Conan Doyle
-
 ## Free Online Tools
 
 * http://freeonlinetools24.com/base64-image
