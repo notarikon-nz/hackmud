@@ -1,104 +1,117 @@
-function(context, args){// s:#s.sys.upgrades
-
-	if (!args || !args.s) {
-		return "usage: keychain { s:#s.sys.upgrades }"
-	}
-
-	let s = args.s
+function(context, args){
 
 	let lib = #fs.scripts.lib()	
 
-	let caller = context.caller,
-		l0cket = "sa23uw,tvfkyq,uphlaw,vc2c7q,xwz7ja,i874y3,72umy0,5c7e1r,hc3b69,nfijix,4jitu5,6hh8xw,j1aa4n,eoq6de,vthf6e,d9j270,cy70mo,lq09tg,9p65cu,vzdt6m,nyi5u2,voon2h,ellux0,pmvr1q,cmppiq".split(','),
-		upgrades = s.call( { full:true,filter:{type:"tool"} } ),
-		msg = "\n\n",
+	let l0cket,
+		upgrades = #hs.sys.upgrades( { full:true,filter:{type:"tool"} } ),
+		msg = "\n",
 		found = true,
-		key_list = new Array()
+		key_list = new Array(),
+		key_count = {},
+		missing_keys = 0,
+		index = 0,
+		lowest,
+		cost,
+		token
+		
+		l0cket = "cmppiq,xwz7ja,uphlaw,6hh8xw,tvfkyq,vc2c7q,9p65cu,i874y3,sa23uw,ellux0,pmvr1q,hzq???,72umy0,eoq6de,fr8???,xfn???,4jitu5,vthf6e,5c7e1r,hc3b69,nfijix,lq09tg,qvgtnt,d9j270,j1aa4n,nyi5u2,voon2h,8iz???,cy70mo,ooi???,vzdt6m,y11dc5".split(",")
 
 	// header
-	msg += " id   k3y      rarity   tier   market        cost    command\n"
-	msg += "---------------------------------------------------------------------------------------\n"
+	msg += "`1SLT` ┃ `1CNT` | `1K3Y`    ┃ `1RAR` ┃ `1TIR` ┃ `1TOKEN`  ┃ `1PRICE`       ┃ `1BUY COMMAND`  \n"
+	msg += "━━━━╋━━━━━╋━━━━━━━━╋━━━━━╋━━━━━╋━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n"
 
 	for (let k3y of l0cket) {
-		found = false;
-		let index = 0
+		found = false
+		index = 0
 
+		// Count and find upgrades for each key
 		for (let u of upgrades) {
-			let i = u.i
-			if (u.k3y == k3y) {
+			if (u.k3y === k3y) {
+				key_count[u.k3y] = (key_count[u.k3y] || 0) + 1
 				if (!found) {
-					found = true
-					index = key_list.push( {
-						i:u.i,
-						k:u.k3y,
-						r:u.rarity,
-						t:u.tier,
-						f:found,
-						d:0
+					index = key_list.push({
+						i: u.i,
+						k: u.k3y,
+						r: u.rarity,
+						t: tier(u.k3y),
+						f: true,
+						d: 0
 					})
+					found = true
 				}
 			}
 		}
 
+		// If no upgrades found, look up the market for lowest offer
 		if (!found) {
-			let lowest = #fs.market.browse({k3y:k3y}),
-				cost = "",
-				token = ""
-			if (lowest) {
-				if (lowest[0]) {
-					let l = lowest[0]
-					cost = lib.to_gc_str(l.cost)
-					token = l.i
-				}
+			lowest = #fs.market.browse({k3y: k3y})
+			cost = ""
+			token = ""
+			
+			if (lowest && lowest[0]) {
+				cost = lib.to_gc_str(lowest[0].cost)
+				token = lowest[0].i
 			}
+
 			key_list.push({
-				i:-1,
-				k:k3y,
-				r:"",
-				t:9,
-				f:found,
-				c:cost,
-				m:token,
-				d:0
+				i: -1,
+				k: k3y,
+				r: null,
+				t: tier(k3y),
+				f: false,
+				c: cost,
+				m: token,
+				d: 0
 			})
+
+			missing_keys++
 		}
 	}
 
-	msg += "\n"
+	const pad = "   "
+	const div = " ┃ "
+	const rowDivider = "━━━━╋━━━━━╋━━━━━━━━╋━━━━━╋━━━━━╋━━━━━━━━╋━━━━━━━━━━━━━╋━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\n";
+	const noListings = "  `b--`  " + div + "           " + div + "`bno listings`";
+	const noUpgrades = "  `b--`  " + div + "           " + div + "`bno upgrades`";
+	
+	key_list = sort_results(key_list,'t', 'k')
 
-	key_list = sort_results(key_list,'t', 'r')
-
+	let row = 1
 	for (let key of key_list) {
 
-		if (key.i > -1)
-			msg += key.i.toString().padStart(3,"0")
-		else
-			msg += "   "
-
-		msg += "   "
-		msg += (key.f ? "`2" : "`1") + key.k + "`"
-
-		msg += "   " + key.r.padEnd(9," ") + ""
-
-		if (key.t < 9)
-			msg += "     `" + key.t + key.t.toString().padEnd(4," ") + "`"
-		else 
-			msg += "       "
-
-		if (!key.f) {
-			if (key.m) {
-				msg += key.m + "   " +
-				key.c.padStart(9," ") + "    " +
-				"market.buy {i:\"" + key.m + "\", count:1, confirm:true}"
-			} else {
-				msg += " n/a                  none available for purchase"				
-			}
-
+		if (row === 17 || row === 33 || row === 49) {
+			msg += rowDivider;
 		}
-		msg += "\n"
+		row++;
+
+		// id/slot
+		msg += (key.i > -1 ? key.i.toString().padStart(3,"0") : pad) + div;
+
+		// k3y count
+		let kc = key_count[key.k] || "   ";  // Use default string if key.k is not in key_count
+		kc = (typeof kc === 'number' || typeof kc === 'string') ? kc.toString().padStart(3, " ") : kc;
+		kc = (kc > 1) ?`\`5${kc}\`` : `\`1${kc}\``
+		msg += kc + div;
+
+		// k3y name and rarity
+		msg += (key.f ? "`2" : "`1") + key.k + "`" + div + " `" + (key.r || 'z') + (key.r || 'z') + "` " + div;
+
+		// tier
+		msg += (key.t < 9 ? " `" + key.t + key.t + "` " : "   ") + div;
+
+		// market or upgrades
+		msg += (!key.f ? (key.m ? key.m + div + key.c.padStart(11, " ") + div + "market.buy{i:\"" + key.m + "\",count:1,confirm:1}" : noListings) : noUpgrades) + "\n";
+
 	}
 
+	if (missing_keys > 0)
+		msg += "\nMissing `V" + missing_keys + "` keys"
+
 	return msg
+
+	function tier(idx) {
+		return (Math.floor(l0cket.indexOf(idx) / 16) + 1).toString()
+	}
 
 	function sort_results(arr, key1, key2) {
 		return arr.sort((a,b) => {
