@@ -22,11 +22,12 @@ EX: `#db.i ( {single_item} )`
 
 Correct insertions are in the format of:
 
+```
 EX: 	#db.i ( {item_id:”data”} )
 	#db.i ( {item_id:variable) }
 	#db.i ( {item_id:[“stuff”, “things”, “more stuff”]} )
 	#db.i ( {item:{ nested BSON object } } )
-
+```
 Storing in a 1:1 relation, that is to say inserting an object with a particular “id” attached to a set of data is possible in the following format:
 ```
     const store_failed = -1;
@@ -51,11 +52,12 @@ The find function for MongoDB retrieves key:value pairs and returns all BSON obj
 EX: `#db.f ( {single_item} )`
 
 Correct finds are identical to inserts:
+```
 EX: 	#db.f ( {item_id:”data”} )
 	#db.f ( {item_id:variable) }
 	#db.f ( {item_id:[“stuff”, “things”, “more stuff”]} )
 	#db.f ( {item:{ nested BSON object } } )
-
+```
 Getting 1:1 values out of MongoDB using our above store function can be done using:
 ```
     const op_failed = -1;
