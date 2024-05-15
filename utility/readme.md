@@ -19,3 +19,7 @@ Example universal lib for storing information and/or functions - sorry, this has
 ### [bank](https://github.com/notarikon-nz/hackmud/blob/main/utility/bank.js)
 
 Barebones example to transfer money in & out of alt user. Utilises context's caller info to prevent unauthorised access.
+
+### keybank
+
+Example on how to request a k3y from your alt remotely, useful for l0ckbox 
