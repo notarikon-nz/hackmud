@@ -1,4 +1,4 @@
-## t3 
+# Tier 3 (T3)
 
 Below are brief descriptions of t3-related scripts. At the bottom of the page is an overview on how to scrape t3 corps for NPC locs.
 
@@ -16,7 +16,7 @@ The sister script to bot_brain.js that shows the age of T3 corps to allow target
 
 ---
 
-### Scraping Process
+## Scraping Process
 
 T3 corp locs will utilise a variation on words like private, internal or employee, and will be LOWSEC, compared to T2s HIGHSEC or MIDSEC.
 
@@ -80,7 +80,7 @@ flow          calendar      w_ek
 connect       ???           m_g
 ```
 
-#### synergize | org chart | |
+### synergize | org chart | |
 The corruption here is fixed, and cannot be removed. Take note of any usernames you have not encountered yet, and add to your master username list.
 
 ```
@@ -114,7 +114,7 @@ purple1
   m_poppins
 ```
 
-#### flow | calendar | w_ek
+### flow | calendar | w_ek
 The calendar accepts two arguments: d in order to move the date forward or back, e.g. d:1 (or even better d:12 - try it out) and i to view information about specific entries, e.g. i:"w01xnk"
 
 ```
@@ -149,6 +149,8 @@ Calendar entries (and others) are decryped using a custom (but not horrible) enc
 
 What we're looking for is a reference to a private storage location. Not all users will have one, but make sure you check the calendar thoroughly. Once you find it, leave the current corp for a moment, and head over there.
 
+### reviews | enhance | t_st
+
 Now that we have our passphrase in hand, let's return to the `reviews`. Take note of the `page` keyword at the top.
 
 ```
@@ -177,7 +179,7 @@ Cycle through each of the pages, and if you're lucky (i.e. someone hasn't beaten
 
 ```derelict_ddttl_n47haw.pubinfo_a8jwh6```
 
-connect | ??? | m_g
+### connect | ??? | m_g
 In the initial screen there is a fourth corrupted option - it's possible to guess this option, so far we've discovered perform: "connect" and a_t: "m_g". work: "???" is still unknown.
 
 Whenever you try to use one of these options, the only response you get is: `<command> currently unavailable`
